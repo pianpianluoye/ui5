@@ -1,0 +1,9 @@
+html .myApp .myCustomButton.sapMBtn {
+    margin-right: 10px;
+}
+
+.myApp .myCustomText {
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+}

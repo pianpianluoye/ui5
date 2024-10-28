@@ -1,0 +1,53 @@
+<mvc:XMLView controllerName="sap.ui5.walkthrough.controller.FapiaoList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Table id="fltfapiaoList" class="sapUiResponsiveMargin" width="auto" items="{
+        path: 'fapiao>/Invoices',
+        sorter: { path: 'ShipperName', descending: false,group: false }
+        }">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{flti18n>fapiaoListTitle}"></Title>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <SearchField width="35%" search=".onSearch"></SearchField>
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column hAlign="End" minScreenWidth="Small" demandPopin="true" width="4em">
+                <Text text="{flti18n>columnQuantity}"></Text>
+            </Column>
+            <Column>
+                <Text text="{flti18n>columnName}"></Text>
+            </Column>
+            <Column minScreenWidth="Small" demandPopin="true">
+                <Text text="{flti18n>columnStatus} "></Text>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="false">
+                <Text text="{flti18n>columnSupplier}"></Text>
+            </Column>
+            <Column hAlign="End">
+                <Text text="{flti18n>columnPrice}"></Text>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press=".onSelectFapiao">
+                <cells>
+                    <ObjectNumber number="{fapiao>Quantity}" emphasized="false"/>
+                    <ObjectIdentifier title="{fapiao>ProductName}"/>
+                    <Text text="{
+						path: 'fapiao>Status',
+						formatter: '.formatter.statusText'
+					}"/>
+                    <Text text="{fapiao>ShipperName}"/>
+                    <ObjectNumber number="{
+							parts: [{path: 'fapiao>ExtendedPrice'}, {path: 'view>/currency'}],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {
+								showMeasure: false
+							}
+						}" unit="{view>/currency}" state="{= ${fapiao>ExtendedPrice} > 50 ? 'Error' : 'Success' }"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</mvc:XMLView>

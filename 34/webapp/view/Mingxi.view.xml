@@ -1,0 +1,31 @@
+<mvc:View controllerName="sap.ui5.walkthrough.controller.Mingxi"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:wt="sap.ui5.walkthrough.control">
+    <Page title="{flti18n>mingxiPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
+        <ObjectHeader responsive="true" fullScreenOptimized="true" number="{
+            parts: [{path: 'fapiao>ExtendedPrice'}, {path: 'view>/currency'}],
+            type: 'sap.ui.model.type.Currency' ,
+            formatOptions: {
+                showMeasure: true,
+                unit: '{view>/currency}',
+                currencyCode: true
+            }
+        }" numberUnit="{view>/currency}" intro="{fapiao>ShipperName}" title="{fapiao>ProductName}">
+            <attributes>
+                <ObjectAttribute title="{flti18n>quantityTitle}" text="{fapiao>Quantity}"></ObjectAttribute>
+                <ObjectAttribute title="{flti18n>dateTitle}" text="{
+                path: 'fapiao>ShippedDate',
+                type: 'sap.ui.model.type.Date',
+                formatOptions: {
+                  style: 'long',
+                  source: {
+                    pattern: 'yyyy-MM-ddTHH:mm:ss'
+                  }
+                }
+              }"/>
+            </attributes>
+        </ObjectHeader>
+        <wt:ProductRating id="rating" ratingChanged=".onRatingChanged" class="sapUiSmallMarginBeginEnd"/>
+    </Page>
+</mvc:View>

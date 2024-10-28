@@ -1,0 +1,99 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "id": "sap.ui5.walkthrough1",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "fapiaoRemote": {
+        "uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "type": "XML",
+      "viewName": "sap.ui5.walkthrough.view.App",
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.90.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.ui5.walkthrough.i18n.i18n",
+          "supportedLocales": [""],
+          "fallbackLocale": ""
+        }
+      },
+      "fapiao": {
+        "dataSource": "fapiaoRemote"
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "sap.ui5.walkthrough.view",
+        "controlId": "app",
+        "controlAggregation": "pages"
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "HomeName",
+          "target": "home"
+        },
+        {
+          "pattern": "mx/{fapiaoLuJing}",
+          "name": "MingxiName",
+          "target": "fapiaomx"
+        }
+      ],
+      "targets": {
+        "home": {
+          "viewId": "HomeViewId",
+          "viewName": "Home"
+        },
+        "fapiaomx": {
+          "viewId": "MingxiViewID",
+          "viewName": "Mingxi"
+        }
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  }
+}

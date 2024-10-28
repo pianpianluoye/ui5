@@ -1,0 +1,11 @@
+<mvc:XMLView xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" controllerName="sap.ui5.walkthrough.controller.HelloPanel">
+    <Panel headerText="{flti18n>hiPanelTitle}" class="sapUiResponsiveMargin" width="auto" expandable="{device>/system/phone}" expanded="{=!${device>/system/phone}}">
+        <content>
+            <Button icon="sap-icon://open-folder" id="a" text="{flti18n>openDialogBtn}" press=".openDialog" class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop" />
+            <Button text="{flti18n>showButtonText}" press=".onPress" class="myCustomButton"/>
+            <Input value="{/personInfo/name}" valueLiveUpdate="true" width="50%"/>
+            <FormattedText htmlText="Hi {/personInfo/name}" class="sapUiSmallMargin myCustomText"/>
+        </content>
+    </Panel>
+</mvc:XMLView>
